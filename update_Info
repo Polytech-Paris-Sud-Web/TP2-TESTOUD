@@ -1,0 +1,20 @@
+Migration 5.2 => 8.0 : 
+
+- HttpModule => HttpClientModule (Ok)
+- Verification Version Node : > 8 (Ok)
+- MAJ angular CLI vers angular cli 6 
+    npm install @angular/cli@6
+    ng update @angular/cli@6
+- MAJ de tout les paquets du framework Angular vers la v6
+    ng update @angular/core@6
+- Enlever les vieilles features de rxjs en utilisant tslint
+    npm install -g rxjs-tslint
+    rxjs-5-to-6-migrate -p src/tsconfig.app.json
+- ***** Utilisation de Typescript 3.1 *****
+- MAJ vers Angular v7
+    ng update @angular/cli@7 @angular/core@7
+- MAJ vers Angular v8
+- Check version de node (doit etre superieure a 10) (OK)
+- Dans un autre dossier, installer angular 8 (via npm), generer une nouvelle app (ng new app) et recupérer le angular.json pour le mettre dans notre projet.
+- recupérer aussi tsconfig app json et tsconfig spec json
+- ng update
