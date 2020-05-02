@@ -11,21 +11,25 @@ import Swal from 'sweetalert2';
 export class ArticlesComponent implements OnInit {
 
   articles : Article[];
+  nbResultsFounded: number = 0;
 
   constructor(private articleService: ArticleService) {
   }
 
   ngOnInit() {
+    this.findAll();
+  }
+
+  findAll() {
     this.articleService.getArticles().subscribe(articles => {
       this.articles = articles;
-    })
+      this.nbResultsFounded = this.articles.length;
+    });
   }
 
   delete({id}: Article){
     this.articleService.delete(id).subscribe(()=>{
-      this.articleService.getArticles().subscribe(articles => {
-        this.articles = articles;
-      })
+      this.findAll();
       // If add succeed, alert on the top right hand corner
       const Toast = Swal.mixin({
         toast: true,
@@ -47,9 +51,26 @@ export class ArticlesComponent implements OnInit {
   }
 
   newArticle(article: Article){
-    this.articleService.getArticles().subscribe(articles => {
-      this.articles = articles;
-    })
+    this.findAll();
+  }
+
+  search(){
+    let valueSearch = document.getElementById("searchField")["value"];
+    this.articles = this.articles.filter(e => {
+      if(e.title.includes(valueSearch)){
+        document.getElementById("searchField").style.color = "initial";
+        return e;
+      } else {
+        document.getElementById("searchField").style.color = "red";
+      }
+    });
+    this.nbResultsFounded = this.articles.length;
+
+    if(valueSearch == ""){
+      document.getElementById("searchField").style.color = "initial";
+      this.findAll();
+      this.nbResultsFounded = this.articles.length;
+    }
   }
 
 }
