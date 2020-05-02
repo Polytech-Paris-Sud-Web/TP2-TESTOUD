@@ -23,4 +23,4 @@ Migration 8 => 9 :
 
 - Vérification version de node (>10.13) (OK)
 - ng update @angular/core@8 @angular/cli@8 => bug courrant dans angular 8 => ng update @angular/cli @angular/core --allow-dirty
-
+- ng update pour mettre a jour les packages

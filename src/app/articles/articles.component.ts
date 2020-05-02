@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from "../models/article";
 import {ArticleService} from "../services/article.service";
-import {Observable} from "rxjs";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-articles',
@@ -10,27 +10,46 @@ import {Observable} from "rxjs";
 })
 export class ArticlesComponent implements OnInit {
 
-  private _articles : Observable<Article[]>;
+  articles : Article[];
 
   constructor(private articleService: ArticleService) {
   }
 
-  articles(): Observable<Article[]> {
-    return this._articles;
-  }
-
   ngOnInit() {
-    this._articles = this.articleService.getAll();
+    this.articleService.getArticles().subscribe(articles => {
+      this.articles = articles;
+    })
   }
 
-  delete(article: Article){
-    this.articleService.delete(article.id).subscribe(()=>{
-      this._articles = this.articleService.getAll();
+  delete({id}: Article){
+    this.articleService.delete(id).subscribe(()=>{
+      this.articleService.getArticles().subscribe(articles => {
+        this.articles = articles;
+      })
+      // If add succeed, alert on the top right hand corner
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'error',
+        title: 'Article succefully deleted'
+      })
     });
   }
 
   newArticle(article: Article){
-    this._articles = this.articleService.getAll();
+    this.articleService.getArticles().subscribe(articles => {
+      this.articles = articles;
+    })
   }
 
 }

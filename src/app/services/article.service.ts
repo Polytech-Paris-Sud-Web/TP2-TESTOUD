@@ -12,11 +12,11 @@ export class ArticleService {
   constructor(private http : HttpClient) {
   }
 
-  public getAll(): Observable<Article[]> {
+  public getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>("http://localhost:3000/articles");
   }
 
-  public get(id:number): Observable<Article> {
+  public getArticle(id:number): Observable<Article> {
     return this.http.get<Article>(`http://localhost:3000/articles/${id}`);
   }
 

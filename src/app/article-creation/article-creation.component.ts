@@ -2,7 +2,8 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ArticleService} from "../services/article.service";
 import {RawArticle} from "../models/raw-article";
-import { EventEmitter } from '@angular/core';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-article-creation',
@@ -31,6 +32,24 @@ export class ArticleCreationComponent implements OnInit {
       content : formModel.content,
       authors : formModel.authors
     }
-    this.articleService.add(rawArticle).subscribe();
+    this.articleService.add(rawArticle).subscribe(()=> {
+      // If add succeed, alert on the top right hand corner
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Article succefully created'
+      })
+    });
   }
 }

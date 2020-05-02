@@ -9,6 +9,8 @@ import { ArticleComponent } from './article/article.component';
 import { ArticlesComponent } from './articles/articles.component';
 import {ArticleService} from "./services/article.service";
 import { ArticleCreationComponent } from './article-creation/article-creation.component';
+import { ClarityModule } from '@clr/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   { path: 'create', component: ArticleCreationComponent },
@@ -27,11 +29,13 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: true }
     ),
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClarityModule,
+    BrowserAnimationsModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

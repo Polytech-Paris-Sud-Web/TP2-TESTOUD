@@ -1,18 +1,36 @@
-<h3><i>Create your article</i></h3>
-<form [formGroup]="articleForm" (ngSubmit)="createArticle()">
-  <div class="form-group">
-    <label class="center-block">title:
-      <input class="form-control" formControlName="title">
-    </label>
-    <br />
-    <label class="center-block">content:
-      <textarea class="form-control" formControlName="content"></textarea>
-    </label>
-    <br />
-    <label class="center-block">authors:
-      <input class="form-control" formControlName="authors">
-    </label>
-    <br />
-    <button class="btn btn-success" [disabled]="articleForm.invalid" type="submit">Save</button>
+<div class="clr-row clr-justify-content-center">
+  <div class="clr-col-6">
+      <div class="card">
+        <form [formGroup]="articleForm" (ngSubmit)="createArticle()">
+          <div class="card-header">
+              <strong>Create your own Article</strong>
+          </div>
+          <div class="card-block">
+              <div class="card-text">
+                  <div class="form-group">
+                    <label class="center-block">Title:
+                      <input class="form-control" formControlName="title">
+                    </label>
+                    <br/>
+                    <label class="center-block">Content:
+                      <textarea class="form-control" formControlName="content"></textarea>
+                    </label>
+                    <br/>
+                    <label class="center-block">Authors:
+                      <input class="form-control" formControlName="authors">
+                    </label>
+                    <br/>
+                  </div>     
+              </div>
+          </div>
+          <div class="card-footer">
+            <button [disabled]="articleForm.invalid" type="submit" class="btn btn-success-outline">
+              Create !
+              <clr-icon shape="check"></clr-icon>
+            </button>
+          </div>
+        </form>
+      </div>
   </div>
-</form>
+</div>
+
