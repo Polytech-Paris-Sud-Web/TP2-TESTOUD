@@ -18,3 +18,9 @@ Migration 5.2 => 8.0 :
 - Dans un autre dossier, installer angular 8 (via npm), generer une nouvelle app (ng new app) et recupérer le angular.json pour le mettre dans notre projet.
 - recupérer aussi tsconfig app json et tsconfig spec json
 - ng update
+
+Migration 8 => 9 :
+
+- Vérification version de node (>10.13) (OK)
+- ng update @angular/core@8 @angular/cli@8 => bug courrant dans angular 8 => ng update @angular/cli @angular/core --allow-dirty
+
