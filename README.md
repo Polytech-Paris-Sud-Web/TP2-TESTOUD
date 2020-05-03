@@ -30,7 +30,7 @@ L'objectif principal d'une migration est d'aller vers une "meilleure" applicatio
 
 #### Remarque sur le TP
 
-Je trouve qu'il aurait été intéressant d'ajout un componenent ArticleDetails afin de pour faire (comme j'ai fais pour la liste d'articles) une vérification sur "Est ce que la requete est chargée ? Si oui on affiche le résultat, sinon on attend qu'elle se termine".
+Je trouve qu'il aurait été intéressant d'ajouter un componenent ArticleDetails afin de pouvoir faire (comme j'ai fais pour la liste d'articles) une vérification sur "Est ce que la requete est chargée ? Si oui on affiche le résultat, sinon on attend qu'elle se termine".
 
 
 
