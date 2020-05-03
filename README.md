@@ -28,7 +28,9 @@ Then, you have to import Swal :
 
 L'objectif principal d'une migration est d'aller vers une "meilleure" application, pour généralement évoluer sur un technologie plus récente.
 
-#### Remarques
+#### Remarque sur le TP
 
-J'ai choisi d'orienter le résultat de mon champ de recherche seulement sur le titre afin de ne pas surcharger le code.
+Je trouve qu'il aurait été intéressant d'ajout un componenent ArticleDetails afin de pour faire (comme j'ai fais pour la liste d'articles) une vérification sur "Est ce que la requete est chargée ? Si oui on affiche le résultat, sinon on attend qu'elle se termine".
+
+
 

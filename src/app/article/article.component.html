@@ -1,25 +1,25 @@
 <div class="clr-row clr-justify-content-center">
-  <div class="clr-col-6">
-      <div class="card">
-          <div class="card-header">
-              {{article.title}}
-          </div>
-          <div class="card-block">
-              <div class="card-title">
-                <blockquote><i>Author(s) : {{this.article.authors}}</i></blockquote>
-              </div>
-              <div class="card-text">
-                  <i>{{article.content}}</i>
-              </div>
-          </div>
-          <div class="card-footer">
-              <button (click)="delete()" class="btn btn-warning-outline">
-                  <clr-icon shape="times"></clr-icon>
-              </button>
-              <button [routerLink]="['/articles',this.article.id]" type="button" class="btn btn-info-outline" aria-label="home">
-                <clr-icon shape="help-info"></clr-icon>
-            </button>
-          </div>
-      </div>
-  </div>
+    <div class="clr-col-6">
+        <div class="card">
+            <div class="card-header">
+                {{article.title}}
+            </div>
+            <div class="card-block">
+                <div class="card-title">
+                    <blockquote><i>Author(s) : {{this.article.authors}}</i></blockquote>
+                </div>
+                <div class="card-text">
+                    <i>{{article.content}}</i>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button (click)="delete()" class="btn btn-warning-outline">
+                    <clr-icon shape="times"></clr-icon>
+                </button>
+                <button [routerLink]="['/articles',this.article.id]" type="button" class="btn btn-info-outline" aria-label="home">
+                    <clr-icon shape="help-info"></clr-icon>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

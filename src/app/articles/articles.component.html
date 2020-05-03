@@ -1,25 +1,38 @@
-<div class="card">
-  <div class="card-header">
-    <div class="clr-row clr-justify-content-between">
-      <div class="clr-col-4">
-          <span>
-              Articles List
-          </span>
-      </div>
-      <div class="clr-col-2">
-          <div class="clr-control-container">
-              <div class="clr-input-wrapper">
-                  <input type="text" (keyup)="search()" id="searchField" placeholder="Search ..." class="clr-input">
-                  <img src="../../../assets/search.svg" style="height: 1.5rem; width: 1.5rem;"/>
-              </div>
-              <span class="clr-subtext"> {{nbResultsFounded}} Result(s) founded</span>
-          </div>
-      </div>
-    </div> 
+<ng-template #loading>
+  <div class="col-12" style="text-align: center; padding: 2rem;">
+      <span class="spinner spinner-inline">
+          Loading...
+      </span>
+      <span>
+          Loading...
+      </span>
   </div>
-  <div class="card-block">
-    <div *ngFor="let article of articles">
-      <app-article  [article]="article" (deletedArticle)="delete($event)"></app-article>
+</ng-template>
+
+<ng-container *ngIf="isLoaded; else loading">
+  <div class="card">
+    <div class="card-header">
+      <div class="clr-row clr-justify-content-between">
+        <div class="clr-col-4">
+            <span>
+                Articles List
+            </span>
+        </div>
+        <div class="clr-col-2">
+            <div class="clr-control-container">
+                <div class="clr-input-wrapper">
+                    <input type="text" (keyup)="search()" (keydown.backspace)="search()" id="searchField" placeholder="Search ..." class="clr-input">
+                    <img src="../../../assets/search.svg" style="height: 1.5rem; width: 1.5rem;"/>
+                </div>
+                <span class="clr-subtext"> {{nbResultsFounded}} Result(s) founded</span>
+            </div>
+        </div>
+      </div> 
+    </div>
+    <div class="card-block">
+      <div *ngFor="let article of articles">
+        <app-article  [article]="article" (deletedArticle)="delete($event)"></app-article>
+      </div>
     </div>
   </div>
-</div>
+</ng-container>

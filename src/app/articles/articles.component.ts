@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class ArticlesComponent implements OnInit {
 
   articles : Article[];
+  isLoaded: boolean = false;
   nbResultsFounded: number = 0;
 
   constructor(private articleService: ArticleService) {
@@ -24,6 +25,7 @@ export class ArticlesComponent implements OnInit {
     this.articleService.getArticles().subscribe(articles => {
       this.articles = articles;
       this.nbResultsFounded = this.articles.length;
+      this.isLoaded = true;
     });
   }
 
@@ -57,7 +59,7 @@ export class ArticlesComponent implements OnInit {
   search(){
     let valueSearch = document.getElementById("searchField")["value"];
     this.articles = this.articles.filter(e => {
-      if(e.title.includes(valueSearch)){
+      if(e.title.includes(valueSearch) || e.authors.includes(valueSearch) || e.content.includes(valueSearch)){
         document.getElementById("searchField").style.color = "initial";
         return e;
       } else {
@@ -72,5 +74,4 @@ export class ArticlesComponent implements OnInit {
       this.nbResultsFounded = this.articles.length;
     }
   }
-
 }
